@@ -18,49 +18,49 @@ function writePassword() {
   }
   
 //Add event listener to generate button
-generateBtn.addEventListener("click", generatePassword);
+generateBtn.addEventListener("click", writePassword);
 
 
     // 
 
  // Choose password criteria
- var hasLower = confirm("Do you want your password to contain lowercase letters?");
- var hasUpper = confirm("Do you want your password to contain uppercase letters?");
- var hasNum = confirm("Do you want your password to contain numbers?");
- var hasSpec = confirm("Do you want your password to contain special characters?");
+ var hasLower = confirm("Do you want your password to have lowercase letters?");
+ var hasUpper = confirm("Do you want your password to have uppercase letters?");
+ var hasNum = confirm("Do you want your password to have numbers?");
+ var hasSpec = confirm("Do you want your password to have special characters?");
  var passwordChar = prompt("Choose a password length of at least 8 characters and no more than 128 characters.");
 
 //Input and check if right length 
 var passwordChar = prompt("Choose a password length of at least 8 characters and no more than 128 characters.");
-if(passwordChar >128 || passwordChar <8){
-    alert('Must be BETWEEN 8 & 128 characters')
+if(passwordChar > 128 || passwordChar < 8 ){
+    return('Must be BETWEEN 8 & 128 characters')
     
     
 }
  // Ensure that if someone clicks cancel for all password criteria that it asks them to choose at least one
  else if (hasLower === false && hasUpper === false && hasNum === false && hasSpec === false) {
     alert("You must chose at least one password criteria.");
-    var hasLower = confirm("Do you want your password to contain lowercase letters?");
-    var uhasUpper = confirm("Do you want your password to contain uppercase letters?");
-    var hasNum = confirm("Do you want your password to contain numbers?");
-    var hasSpec = confirm("Do you want your password to contain special characters?");
+    var hasLower = confirm("Do you want your password to have lowercase letters?");
+    var uhasUpper = confirm("Do you want your password to have uppercase letters?");
+    var hasNum = confirm("Do you want your password to have numbers?");
+    var hasSpec = confirm("Do you want your password to have special characters?");
 }
 
 // Use the criteria that are selected to generate the password
 if (hasLower) {
-    possibleChar = possibleChar;
+    possibleChar = possibleChar.concat(lowercaseChar);
 }
 
 if (hasUpper) {
-    possibleChar += uppercaseChar;
+    possibleChar = possibleChar.concat(uppercaseChar);
 }
 
 if (hasNum) {
-    possibleChar += numericalChar;
+    possibleChar = possibleChar.concat(numericalChar);
 }
 
 if (hasSpec) {
-    possibleChar += specialCharacters;
+    possibleChar = possibleChar.concat(specialChar);
 }
  // Generates a random password based on the criteria that have been selected
  for (var i = 0; i < passwordChar; i++) {
